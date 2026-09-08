@@ -1,0 +1,45 @@
+{
+  "questions_path": "./questions.json",
+  "output_dir": "./results",
+
+  "repeats": 1,
+  "llm_timeout_s": 120,
+
+  "conditions": ["full"],
+  "graph_paths": {
+    "full": "./graph-full.ttl",
+    "base-only": "./graph-base.ttl"
+  },
+  "llms": [
+    {
+      "name": "gpt-4o",
+      "api_url": "https://api.openai.com/v1/chat/completions",
+      "api_key": "sk-...",
+      "model": "gpt-4o"
+    },
+    {
+      "name": "gpt-5.6-sol",
+      "api_url": "https://api.openai.com/v1/chat/completions",
+      "api_key": "sk-...",
+      "model": "gpt-5.6-sol"
+    },
+    {
+      "name": "gemma4-8b-local",
+      "api_url": "http://localhost:11434/v1/chat/completions",
+      "api_key": "sk-...",
+      "model": "gemma4:e4b"
+    },
+    {
+      "name": "gpt-oss-20b-local",
+      "api_url": "http://localhost:11434/v1/chat/completions",
+      "api_key": "sk-...",
+      "model": "gpt-oss:latest"
+    },
+    {
+      "name": "qwen3-14b-local",
+      "api_url": "http://localhost:11434/v1/chat/completions",
+      "api_key": "sk-...",
+      "model": "qwen3:14b"
+    }
+  ]
+}

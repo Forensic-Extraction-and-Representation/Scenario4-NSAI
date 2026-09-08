@@ -1,0 +1,26 @@
+[
+    {
+		"TypeName": "VT_MALICIOUS_HASH",
+        "Md5": "ba67eb02c937e3afc9ce3454c2a7f324",
+        "Source": "VirusTotal",
+        "ThreatType": "Malware",
+        "Description": "BitCoin Miner",
+        "Malicious": "true"
+    }, {
+        "TypeName": "TSK_METADATA",
+        "Category": "Metadata",
+        "HostSha1": "a620f523a8f7ea5ddabe27b0c29d87eff52c665d",
+        "SourceFile": "C:\\Users\\JohnF\\Downloads\\BavPro_Setup_Mini_C1.exe",
+        "SourceFileMd5": "ba67eb02c937e3afc9ce3454c2a7f324",
+        "ModifiedDateTime": 1548706645,
+        "CreatedDateTime": 1548706644
+    }, {
+        "TypeName": "TSK_METADATA",
+        "Category": "Metadata",
+        "HostSha1": "9fd144f0898b5511ba3392370e6301eb6b5b91df",
+        "SourceFile": "C:\\Users\\Steve\\Downloads\\ccsetup552.exe",
+        "SourceFileMd5": "ba67eb02c937e3afc9ce3454c2a7f324",
+        "ModifiedDateTime": 1548805267,
+        "CreatedDateTime": 1548805251
+    }
+]

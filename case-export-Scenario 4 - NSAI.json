@@ -1,0 +1,128 @@
+{
+    "Manifest": {
+        "ImportMessage": "This case relates to Scenario 4 for the Thesis \u0022A Framework for Mapping Artefacts to Knowledge-Graph Representations for Digital Forensic Investigations\u0022 by Allan Korol.",
+        "IncludedSections": [
+            "Directories",
+            "GraphSettings",
+            "ConnectionSettings",
+            "Repositories",
+            "AgentConfiguration",
+            "Queries"
+        ],
+		"AgentSecrets": [
+		  {
+			"AgentKey": "QueryHelper",
+			"FieldName": "ApiKey",
+			"IsIncluded": false
+		  },
+		  {
+			"AgentKey": "Agent2",
+			"FieldName": "ApiKey",
+			"IsIncluded": false
+		  }
+		]
+    },
+    "CaseInfo": {
+        "Name": "Scenario4-NSAI",
+        "Description": "",
+        "CaseNumber": "S4",
+        "CaseType": "Scenario",
+        "CaseStatus": "Active",
+        "CaseDate": "2026-06-28T03:41:00.999658Z",
+        "Namespace": "",
+        "NamespaceAbbrev": ""
+    },
+    "Configuration": {
+        "InvestigationName": "Scenario4-NSAI",
+        "OntologyOutputFormat": "ttl",
+        "TranspiledSourceOutputRoot": "",
+        "OutputTranspiledSource": false,
+        "PreCompiledDirectoryOption": "PreCompiled",
+        "ScriptDirectoryOption": "Source",
+        "PackageDirectoryOption": "Packages",
+        "NamespaceOption": "http://scenario-4.fear.graph/",
+        "NamespaceAbbrevOption": "s4",
+        "WorkingDirectory": "Investigation-Scenario4-Inference",
+        "GraphManager": {
+            "RemoteGraph": false,
+            "RemoteGraphSetupProvider": null
+        },
+        "AgentConfiguration": {
+            "Enabled": true,
+            "DefaultAgent": "Agent2",
+            "Agents": {
+                "QueryHelper": {
+                    "AgentIdentifier": "AG-ec9590ed14",
+                    "AgentName": "QueryHelper",
+                    "AgentType": "OpenAI",
+                    "Description": "Agent to help generate SPARQL Queries",
+                    "InputChain": [
+                        "<Prompt>"
+                    ],
+                    "AgentOptions": {
+                        "ApiKey": "",
+                        "AgentBaseUrl": "https://api.openai.com/v1",
+                        "AgentModel": "gpt-4o",
+                        "SystemPrompt": "",
+                        "TemplatePrompt": ""
+                    }
+                },
+                "Agent2": {
+                    "AgentIdentifier": "AG-8316a4d581",
+                    "AgentName": "Agent2",
+                    "AgentType": "OpenAI",
+                    "Description": "Default Agent",
+                    "InputChain": [
+                        "<Prompt>",
+                        "<Graph>"
+                    ],
+                    "AgentOptions": {
+                        "ApiKey": "",
+                        "AgentBaseUrl": "https://api.openai.com/v1",
+                        "AgentModel": "gpt-4o",
+                        "SystemPrompt": "",
+                        "TemplatePrompt": ""
+                    }
+                }
+            }
+        },
+        "Connections": {
+            "GraphDBConnection": {
+                "Endpoint": "",
+                "Authentication": false,
+                "Language": "SPARQL",
+                "Username": "",
+                "Password": ""
+            },
+            "DatabaseConnections": {}
+        },
+        "Repositories": {
+            "GFEAR": [
+                "git\u002Bhttps://github.com/Forensic-Extraction-and-Representation/Scenario4-NSAI.git/NSAI"
+            ],
+            "RFEAR": [
+                "git\u002Bhttps://github.com/Forensic-Extraction-and-Representation/Scenario4-NSAI.git/NSAI"
+            ]
+        },
+        "PrecompiledLibraries": {
+            "CFEAR": [],
+            "GFEAR": [],
+            "RFEAR": []
+        },
+        "PackagedSources": [],
+        "FindEntityStrategyFactory": {
+            "Local": "FEAR.Runtime.KnowledgeGraph.EntitySearch.InMemory.DefaultFindEntityStrategyFactory",
+            "Remote": null
+        }
+    },
+    "Queries": [{
+            "Name": "All Data",
+            "Description": "All Data",
+            "QueryText": "CONSTRUCT {?A?B?C} WHERE{?A?B?C}"
+        }, {
+            "Name": "All Inferrred",
+            "Description": "Retrieves all entities that are either a subject or object of an inferred knowledge predicate.",
+            "QueryText": "PREFIX autopsy: \u003Chttps://purl.org/ontology/autopsy/\u003E\nPREFIX fik: \u003Chttp://inferred-knowledge.fear.graph/\u003E\n\nCONSTRUCT {\n?relatedSubject ?predicate ?object\n}\nWHERE {\n  {\n    SELECT DISTINCT ?relatedSubject\n    WHERE {\n      ?relatedSubject ?p ?o .\n      FILTER(STRSTARTS(STR(?p), \u0022http://inferred-knowledge.fear.graph/\u0022))\n    }\n  }\n\n  {\n    ?relatedSubject ?predicate ?object .\n  }\n}"
+        }
+    ]
+}

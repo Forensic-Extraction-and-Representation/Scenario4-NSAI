@@ -1,0 +1,10 @@
+[
+    {
+		"TypeName": "VT_MALICIOUS_HASH",
+        "Md5": "ba67eb02c937e3afc9ce3454c2a7f324",
+        "Source": "VirusTotal",
+        "ThreatType": "Malware",
+        "Description": "BitCoin Miner",
+        "Malicious": "true"
+    }
+]
